@@ -23,6 +23,7 @@ const SaveTodo=()=>{
     if(todo.value.trim() != ""){
         save("save",todo.value);
         message.value="";
+        todo.value="";
     }else{
         message.value="Todo Has No Value";
     }

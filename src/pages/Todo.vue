@@ -8,6 +8,7 @@ import TodoHeader from "./../components/todo/TodoHeader.vue"
 import TodoBody from "./../components/todo/TodoBody.vue"
 import { ref, onBeforeMount } from "vue";
 import { Todo } from "../model/todo";
+import {instance} from "./../webServices/webServices";
 
 const todos = ref<Todo[]>([]);
 
@@ -21,27 +22,8 @@ const saveTodo = (item: string) => {
     todos.value.push(todo);
 }
 
-onBeforeMount(() => {
-    let arr = [
-        {
-            userId: 1,
-            completed: false,
-            id: todos.value.length + 1,
-            title: 'a'
-        },
-        {
-            userId: 2,
-            completed: true,
-            id: todos.value.length + 1,
-            title: 'b'
-        },
-        {
-            userId: 3,
-            completed: true,
-            id: todos.value.length + 1,
-            title: 'c'
-        }
-    ]
+onBeforeMount(async () => {
+    let arr=(await instance.get("/todos")).data;
     todos.value.push(...arr)
 })
 
