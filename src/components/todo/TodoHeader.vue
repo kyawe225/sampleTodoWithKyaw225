@@ -1,4 +1,7 @@
 <template>
+    <div>
+        {{ message }}
+    </div>
     <form @submit.prevent="SaveTodo">
         <div>
             <input type="text" v-model="todo" />
@@ -14,8 +17,15 @@ const save=defineEmits(["save"]);
 
 const todo = ref("");
 
+const message=ref("");
+
 const SaveTodo=()=>{
-    save("save",todo.value);
+    if(todo.value.trim() != ""){
+        save("save",todo.value);
+        message.value="";
+    }else{
+        message.value="Todo Has No Value";
+    }
 }
 
 </script>
