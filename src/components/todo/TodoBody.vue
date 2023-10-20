@@ -1,12 +1,12 @@
 <template>
-    <table>
+    <table class="col-12">
         <tbody>
             <tr v-for="item in props.todos">
                 <td>
-                    <article>
+                    <article class="border-bottom p-2 border-bottom-1">
                         <div>{{ item.userId }}</div>
-                        <p>{{ item.title }}</p>
-                        <input type="checkbox" v-model="item.completed" :disabled="item.completed" />
+                        <p class="h3">{{ item.title }}</p>
+                        <input type="checkbox" v-model="item.completed" :disabled="item.completed" class="form-check-input" />
                     </article>
                 </td>
             </tr>
